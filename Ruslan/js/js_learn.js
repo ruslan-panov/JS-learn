@@ -44,5 +44,5 @@ console.log(number);
 // console.log(8%3);
 // console.log(9*9);
 
-console.log(2 + 2 * 2 !== 6 );
+console.log(2 + 2 * 2 !== 8 );
 console.log(2 + 2 * 2 === '6' );
