@@ -264,24 +264,24 @@
 
 // __ __ __ __ __ __ __ __ __ __ __   Объекты, деструктуризация объектов (ES6)    __ __ __ __ __ __ __ __ __ __
 
-const options = {
-  name: "test",
-  width: 1024,
-  hight: 1024,
-  styles: {
-    bg: "red",
-    color: "black",
-  },
-  makeTest: function () {
-    console.log("Test");
-  },
-};
-options.makeTest();
+// const options = {
+//   name: "test",
+//   width: 1024,
+//   hight: 1024,
+//   styles: {
+//     bg: "red",
+//     color: "black",
+//   },
+//   makeTest: function () {
+//     console.log("Test");
+//   },
+// };
+// options.makeTest();
 
-const { color, bg } = options.styles;
-console.log(bg);
+// const { color, bg } = options.styles;
+// console.log(bg);
 
-console.log(Object.keys(options.styles)); // выводит колличество елементов в массиве
+// console.log(Object.keys(options.styles)); // выводит колличество елементов в массиве
 
 // delete options.styles; // удаляет выбранное свойство объекта
 // console.log(options);
@@ -303,3 +303,79 @@ console.log(Object.keys(options.styles)); // выводит колличеств
 //   }
 // }
 // console.log(counter);
+
+// __ __ __ __ __ __ __ __ __ __ __    Массивы и псевдомассивы    __ __ __ __ __ __ __ __ __ __
+
+// const arr = [18, 14, 3, 22, 83];
+// arr.sort(compareNum); // В ДАННОМ СЛУЧАЕ sort = отсортирует обьекты как строки
+// console.log(arr);
+
+// function compareNum(a, b) {          // _______________НЕ ПОНЯТНО?
+//   return a - b;
+// }
+
+// // arr.pop(); // данная команда удаляет последний елемент в массиве
+// // arr.push(10); //  данная команда добавит елемент в конец массива
+// // console.log(arr);
+// // for (let i = 0; i < arr.length; i++) {   // способы перебора массива
+// //   console.log(arr[i]);
+// // }
+// // for (let value of arr) {   // способы перебора массива
+// //   console.log(value);
+// // }
+// arr.forEach(function (item, i, arr) {
+//   console.log(`${i}: ${item} внутри массива${arr}`);
+// });
+// В данном function( item, i, arr) - item = произвольная переменная в которой находятся елементы массива. i = индекс каждого елемента в массиве. arr = название самого массива
+// console.log(`${i}: ${item} внутри массива${arr}`); === мы выводим индекс каждого елемента а также каждый елемент что стоит на этом индексе в массиве arr
+
+// const str = prompt("", "");
+// const products = str.split(", ");
+// products.sort();
+// console.log(products.join("; "));
+
+// __ __ __ __ __ __ __ __ __ __ __   Передача по ссылке или по значению, Spread оператор (ES6-ES9)   __ __ __ __ __ __ __ __ __ __
+
+let a = 5,
+  b = a;
+b = b + a;
+console.log(a);
+console.log(b);
+
+const obj = {
+  a: 5,
+  b: 1,
+};
+
+// const copy = obj; // в данном случае массив не копируется посредством ( copy ) а передается как ссылска на уже существующий массив ( obj ), предав copy.a = 10 мы изменяем уже созданный массив obj !!!!!
+// copy.a = 10;
+// console.log(copy);
+// console.log(obj);
+
+function copy(mainObj) {
+  // копирование объекта
+  let objCopy = {};
+  let key;
+
+  for (key in mainObj) {
+    objCopy[key] = mainObj[key];
+  }
+  return objCopy;
+}
+
+//             !!!! Пример копирования!!!!
+
+const numbers = {
+  a: 5,
+  b: 6,
+  c: 7,
+  d: {
+    x: 8,
+    y: 9,
+  },
+};
+const newNumbers = copy(numbers);
+newNumbers.a = 10;
+newNumbers.d.y = 15;
+console.log(newNumbers);
+console.log(numbers);
